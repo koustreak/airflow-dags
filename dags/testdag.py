@@ -3,7 +3,17 @@ from airflow import DAG
 from airflow.decorators import task
 from airflow.operators.bash import BashOperator
 
-with DAG(dag_id="medium_blog_dag", start_date=datetime(2024, 8, 8), schedule="0 0 * * *") as dag:
+default_args = {
+    'start_date': datetime(2023, 1, 1),  # start_date is required but won't affect as schedule_interval is None
+    'retries': 0,                        # No retries in this case
+}
+
+with DAG(
+    dag_id='adhoc_dag',
+    default_args=default_args,
+    catchup=False,                    # Disable backfilling or catching up
+    schedule_interval=None,           # No schedule, ad-hoc execution
+) as dag:
     # Tasks are represented as operators
     hello = BashOperator(task_id="hello", bash_command="echo hello")
 
