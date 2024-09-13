@@ -9,13 +9,13 @@ default_args = {
 }
 
 with DAG(
-    dag_id='adhoc_dag',
+    dag_id='adhoc_dag_develop',
     default_args=default_args,
     catchup=False,                    # Disable backfilling or catching up
     schedule_interval=None,           # No schedule, ad-hoc execution
 ) as dag:
     # Tasks are represented as operators
-    hello = BashOperator(task_id="hello", bash_command="echo hello")
+    hello = BashOperator(task_id="hello", bash_command="echo hello1")
 
     @task()
     def airflow():
