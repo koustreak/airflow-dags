@@ -9,7 +9,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='adhoc_dag',
+    dag_id='adhoc_dag_main',
     default_args=default_args,
     catchup=False,                    # Disable backfilling or catching up
     schedule_interval=None,           # No schedule, ad-hoc execution
