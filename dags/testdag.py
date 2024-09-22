@@ -15,7 +15,7 @@ with DAG(
     schedule_interval=None,           # No schedule, ad-hoc execution
 ) as dag:
     # Tasks are represented as operators
-    hello = BashOperator(task_id="hello", bash_command="echo hello8")
+    hello = BashOperator(task_id="hello", bash_command="echo hello1")
 
     @task()
     def airflow():
